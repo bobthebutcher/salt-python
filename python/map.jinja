@@ -1,0 +1,72 @@
+{% set required_packages = salt.grains.filter_by({
+    'RedHat': {
+        'pkgs': [
+            'gcc',
+            'wget',
+            'zlib',
+            'zlib-devel',
+            'openssl',
+            'openssl-devel',
+        ]
+    },
+    'Debian': {
+        'pkgs': [
+            'build-essential',
+            'checkinstall',
+            'libreadline-gplv2-dev',
+            'libncursesw5-dev',
+            'libssl-dev',
+            'libsqlite3-dev',
+            'tk-dev',
+            'libgdbm-dev',
+            'libc6-dev',
+            'libbz2-dev',
+        ]
+    },
+    'Suse': {
+        'pkgs': [
+            'readline-devel',
+            'gmp-devel',
+            'ncurses-devel',
+            'gdbm-devel',
+            'zlib-devel',
+            'tk',
+            'tix',
+            'gcc-c++',
+            'libX11-devel',
+            'glibc-devel',
+            'bzip2',
+            'tar',
+            'tcl-devel',
+            'tk-devel',
+            'autoconf',
+            'libffi-devel',
+            'valgrind-devel',
+        ]
+    },
+}) %}
+
+{% set python_versions = [{
+    'name': 'python3',
+    'version': '3.7',
+    'release': '3.7.0',
+    'hash': '41b6595deb4147a1ed517a7d9a580271',
+    },{
+    'name': 'python2',
+    'version': '2.7',
+    'release': '2.7.15',
+    'hash': '045fb3440219a1f6923fefdabde63342',
+    }]
+  %}
+
+{% set pip_versions = salt.grains.filter_by({
+    'Debian': {
+        'pkg': 'python-pip',
+    },
+    'RedHat': {
+        'pkg': 'python2-pip',
+    },
+    'Suse': {
+        'pkg': 'python2-pip',
+    },
+}) %}
