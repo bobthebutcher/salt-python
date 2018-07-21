@@ -1,4 +1,4 @@
 include:
-  - python.files
-  - python.python
-  - python.pip
+  - python.required-files
+  - python.install-python
+  - python.install-pip
