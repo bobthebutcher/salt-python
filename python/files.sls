@@ -1,3 +1,4 @@
+{% from 'python/map.jinja' import python_versions with context %}
 {% set master_files_dir =  salt['pillar.get']('master_files_dir', '/srv/salt/files') %}
 
 pip:
